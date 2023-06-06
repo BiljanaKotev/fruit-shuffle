@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  font-family: "Fredoka", sans-serif;
+}
+
 .intro-container {
   width: 1000px;
   height: 70%;
