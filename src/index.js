@@ -7,5 +7,13 @@ console.log(timerSpan);
 startBtn.addEventListener("click", () => {
   introContainer.style.display = "none";
   timer.style.display = "block";
-  timerSpan.innerHTML = setInterval(() => {}, 1000);
+  let timerStart = 16;
+  let downloadTimer = setInterval(function () {
+    timerStart--;
+    timerSpan.textContent = timerStart;
+    if (timerStart <= 0) {
+      clearInterval(downloadTimer);
+      timer.style.display = "none";
+    }
+  }, 1000);
 });
