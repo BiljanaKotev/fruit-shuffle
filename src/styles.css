@@ -7,7 +7,7 @@ body {
   font-family: "Fredoka", sans-serif;
 }
 
-.intro-container {
+.gameboard {
   width: 1000px;
   height: 70%;
   margin: 100px auto;
@@ -19,6 +19,10 @@ body {
   border: 5px solid black;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.active.gameboard {
+  display: grid;
 }
 
 .bg-img {
@@ -73,4 +77,32 @@ button:hover {
 
 .bold {
   font-weight: bold;
+}
+
+.fruit-card {
+  width: 100px;
+  height: 100px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 480px) {
+  .bg-img-container {
+    min-width: 100%;
+    height: auto;
+  }
+
+  .bg-img {
+    height: 100vh;
+    width: auto;
+  }
+
+  .intro-container {
+    width: 80%;
+    margin-left: 0px;
+    margin-right: 0px;
+    left: 35px;
+    margin-top: 50px;
+    height: 100vh;
+  }
 }

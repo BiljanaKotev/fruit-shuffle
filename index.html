@@ -13,19 +13,19 @@
       <h3>Timer:<span></span></h3>
     </div>
     <div class="bg-img-container"><img src="images/fruit-bg.jpg" alt="fruit background image" class="bg-img" /></div>
-    <div id="intro-container" class="intro-container">
-      <p class="intro">Hello and welcome to the Fruit Shuffle Memory Game</p>
-      <p class="instructions">
-        To initiate the game, simply press the <span class="bold">START</span> button. Once the game begins, a timer will activate, starting at 15 seconds and counting down. You'll
-        have precisely 15 seconds to uncover and match all the pairs of fruits. The player who manages to find the most matching pairs when the timer reaches zero will emerge
-        victorious.
-      </p>
-      <!-- <div>
-        <h3>cards clicked:</h3>
-        <h3>cards matched:</h3>
-      </div> -->
-      <button class="bold" id="start">START</button>
+    <div class="gameboard" id="gameboard">
+      <div id="intro-container" class="intro-container">
+        <p class="intro">Hello and welcome to the Fruit Shuffle Memory Game</p>
+        <p class="instructions">
+          To initiate the game, simply press the <span class="bold">START</span> button. Once the game begins, a timer will activate, starting at 15 seconds and counting down.
+          You'll have precisely 15 seconds to uncover and match all the pairs of fruits. The player who manages to find the most matching pairs when the timer reaches zero will
+          emerge victorious.
+        </p>
+
+        <button class="bold" id="start">START</button>
+      </div>
     </div>
+    <script src="src/app.js"></script>
     <script src="src/index.js"></script>
   </body>
 </html>
