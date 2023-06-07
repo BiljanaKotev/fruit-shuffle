@@ -4,10 +4,12 @@ const timer = document.getElementById("timer");
 const timerSpan = document.querySelector(".timer span");
 const gameboard = document.getElementById("gameboard");
 
+// Game starts upon pressing the start button
+
 startBtn.addEventListener("click", () => {
   introContainer.style.display = "none";
   timer.style.display = "block";
-  let timerStart = 16;
+  let timerStart = 3;
   let downloadTimer = setInterval(function () {
     timerStart--;
     timerSpan.textContent = timerStart;
@@ -19,6 +21,8 @@ startBtn.addEventListener("click", () => {
   createBoard();
 });
 
+// Cards are created and displayed
+
 function createBoard() {
   for (let i = 0; i < cardsArray.length; i++) {
     const card = document.createElement("img");
@@ -27,6 +31,7 @@ function createBoard() {
     card.addEventListener("click", flipCard);
     gameboard.appendChild(card);
     card.className = "fruit-card";
+    card.style.borderRadius = "5px";
   }
   gameboard.classList.toggle("active");
 }
