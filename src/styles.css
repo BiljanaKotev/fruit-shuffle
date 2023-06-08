@@ -109,7 +109,7 @@ button:hover {
   display: none;
 }
 
-.active-matched-pairs-container {
+.active.matched-pairs-container {
   display: block;
 }
 

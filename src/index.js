@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const timerSpan = document.querySelector(".timer span");
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
-  console.log(matchedPairsContainer);
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
-  console.log(matchedPairsContainerSpan);
+  const audio = new Audio("sounds/success-1-6297.mp3");
+  console.log(audio);
 
   const cardsClicked = [];
   const cardsClickedId = [];
@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
     createBoard();
     shuffleCards();
+    matchedPairedTotal();
+    playAudio();
   });
 
   // Cards are created and rendered
@@ -39,13 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("img");
       card.setAttribute("data-id", i);
       card.setAttribute("src", "images/fuschia-bg.jpg");
+      card.setAttribute("alt", "images of different fruits");
       card.addEventListener("click", flipCard);
       gameboard.appendChild(card);
       card.className = "back-of-card";
       card.style.borderRadius = "5px";
     }
     gameboard.classList.toggle("active");
-    matchedPairsContainer.toggle("active");
   }
 
   function shuffleCards() {
@@ -89,7 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function matchedPairedTotal() {}
+  function matchedPairedTotal() {
+    matchedPairsContainerSpan.innerContext += 0;
+  }
+
+  function playAudio() {
+    audio.play();
+  }
+
   function gameover() {}
   function restartGame() {}
 });
