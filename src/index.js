@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
-  const audio = new Audio("sounds/success-1-6297.mp3");
-  console.log(audio);
+  const audioSuccess = new Audio("sounds/success-1-6297.mp3");
+  const audioFailure = new Audio("sounds/failure-drum-sound-effect-2-7184.mp3");
 
   const cardsClicked = [];
+  console.log(cardsClicked);
   const cardsClickedId = [];
+  console.log(cardsClickedId);
 
   // Game starts upon pressing the start button
 
@@ -31,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     createBoard();
     shuffleCards();
     matchedPairedTotal();
-    playAudio();
   });
 
   // Cards are created and rendered
@@ -61,42 +62,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardId = this.getAttribute("data-id");
 
     cardsClicked.push(cardsArray[cardId].name);
+    console.log(`${cardsClicked} cards clicked`);
     cardsClickedId.push(cardId);
+    console.log(`${cardsClickedId} cards ID`);
     this.className = "fruit-card";
     this.setAttribute("src", cardsArray[cardId].img);
     if (cardsClicked.length === 2) {
       setTimeout(isMatch, 500);
+      cardsClicked.length = 0;
     }
   }
 
   function isMatch() {
-    // assigned variables to empty array
     const firstCardId = cardsClickedId[0];
     const secondCardId = cardsClickedId[1];
+    const firstCardElement = document.querySelector(`[data-id="${firstCardId}"]`);
+    const secondCardElement = document.querySelector(`[data-id="${secondCardId}"]`);
     console.log(firstCardId);
     console.log(secondCardId);
-    // cardsClickedId.length = 0;
-    cardsClicked.length = 0;
-
+    // cardsClicked.length = 0;
     if (cardsArray[firstCardId].name === cardsArray[secondCardId].name) {
-      alert("Match");
+      playAudio(audioSuccess);
       cardsClickedId.length = 0;
     } else {
-      const firstCardElement = document.querySelector(`[data-id="${firstCardId}"]`);
-      const secondCardElement = document.querySelector(`[data-id="${secondCardId}"]`);
-      cardsClickedId.length = 0;
-
+      playAudio(audioFailure);
       firstCardElement.src = "images/fuschia-bg.jpg";
       secondCardElement.src = "images/fuschia-bg.jpg";
+      cardsClickedId.length = 0;
     }
   }
 
+  let matchedPair = 0;
+
   function matchedPairedTotal() {
-    matchedPairsContainerSpan.innerContext += 0;
+    matchedPairsContainerSpan.innerText = 0;
   }
 
-  function playAudio() {
-    audio.play();
+  function playAudio(success, failure) {
+    if (success) {
+      success.play();
+    } else if (failure) {
+      failure.play();
+    }
   }
 
   function gameover() {}
