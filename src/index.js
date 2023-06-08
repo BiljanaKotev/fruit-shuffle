@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const audioFailure = new Audio("sounds/failure-drum-sound-effect-2-7184.mp3");
 
   const cardsClicked = [];
-  console.log(cardsClicked);
   const cardsClickedId = [];
-  console.log(cardsClickedId);
 
   // Game starts upon pressing the start button
 
@@ -62,14 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardId = this.getAttribute("data-id");
 
     cardsClicked.push(cardsArray[cardId].name);
-    console.log(`${cardsClicked} cards clicked`);
+    console.log(`${cardsClicked} card clicked`);
     cardsClickedId.push(cardId);
-    console.log(`${cardsClickedId} cards ID`);
+    console.log(`${cardsClickedId} card ID`);
     this.className = "fruit-card";
     this.setAttribute("src", cardsArray[cardId].img);
     if (cardsClicked.length === 2) {
-      setTimeout(isMatch, 500);
-      cardsClicked.length = 0;
+      setTimeout(() => {
+        isMatch();
+        cardsClicked.length = 0;
+      }, 1000);
     }
   }
 
@@ -78,11 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const secondCardId = cardsClickedId[1];
     const firstCardElement = document.querySelector(`[data-id="${firstCardId}"]`);
     const secondCardElement = document.querySelector(`[data-id="${secondCardId}"]`);
-    console.log(firstCardId);
-    console.log(secondCardId);
-    // cardsClicked.length = 0;
+
     if (cardsArray[firstCardId].name === cardsArray[secondCardId].name) {
       playAudio(audioSuccess);
+      matchedPairedTotal();
       cardsClickedId.length = 0;
     } else {
       playAudio(audioFailure);
@@ -95,7 +94,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let matchedPair = 0;
 
   function matchedPairedTotal() {
-    matchedPairsContainerSpan.innerText = 0;
+    if (cardsClicked.length === 2) {
+      matchedPairsContainerSpan.innerText = matchedPair += 1;
+
+      if (matchedPair === cardsArray.length / 2) {
+        youWin();
+      }
+    }
+  }
+
+  function youWin() {
+    alert("you win");
+    console.log("you win");
   }
 
   function playAudio(success, failure) {
