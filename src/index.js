@@ -4,6 +4,9 @@ const timer = document.getElementById("timer");
 const timerSpan = document.querySelector(".timer span");
 const gameboard = document.getElementById("gameboard");
 
+const cardsClicked = [];
+const cardsClickedId = [];
+
 // Game starts upon pressing the start button
 
 startBtn.addEventListener("click", () => {
@@ -21,7 +24,7 @@ startBtn.addEventListener("click", () => {
   createBoard();
 });
 
-// Cards are created and displayed
+// Cards are created and rendered
 
 function createBoard() {
   for (let i = 0; i < cardsArray.length; i++) {
@@ -30,15 +33,43 @@ function createBoard() {
     card.setAttribute("src", "images/blackImg.jpg");
     card.addEventListener("click", flipCard);
     gameboard.appendChild(card);
-    card.className = "fruit-card";
+    card.className = "back-of-card";
     card.style.borderRadius = "5px";
   }
   gameboard.classList.toggle("active");
 }
 
-function shuffleCards() {}
+function flipCard() {
+  const cardId = this.getAttribute("data-id");
+  // adds the name property from the cardsArr identified by card ID to the cardsChosen array
+  cardsClicked.push(cardsArray[cardId].name);
+  cardsClickedId.push(cardId);
+  this.className = "fruit-card";
+  this.setAttribute("src", cardsArray[cardId].img);
+  if (cardsClicked.length === 2) {
+    setTimeout(isMatch, 500);
+  }
+}
 
-function flipCard() {}
+function isMatch() {
+  const firstCardId = cardsClickedId[0];
+  const secondCardId = cardsClickedId[1];
+
+  if (cardsArray[firstCardId].name === cardsArray[secondCardId].name) {
+    alert("Match");
+  } else {
+    const firstCardElement = document.querySelector(`[data-id="${firstCardId}"]`);
+    const secondCardElement = document.querySelector(`[data-id="${secondCardId}"]`);
+
+    firstCardElement.src = "images/blackImg.jpg";
+    secondCardElement.src = "images/blackImg.jpg";
+  }
+  cardsClicked.length = 0;
+  cardsClickedId.length = 0;
+  console.log(cardsClicked);
+  console.log(cardsClickedId);
+}
+function shuffleCards() {}
 
 function matchedPairedTotal() {}
 function gameover() {}
