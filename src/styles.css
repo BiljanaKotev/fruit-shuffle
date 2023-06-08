@@ -27,6 +27,7 @@ body {
   justify-items: center;
   align-items: center;
   gap: 10px;
+  padding-top: 75px;
 }
 
 .bg-img {
@@ -43,10 +44,14 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 50px;
-  margin-left: 10px;
+  margin-left: 40px;
   font-size: 38px;
   display: none;
   margin-right: 10px;
+}
+
+.timer > h3 > span {
+  padding-left: 10px;
 }
 
 p {
@@ -92,7 +97,30 @@ button:hover {
 }
 
 .fruit-card {
-  border: 1px solid black;
+  border: 3px solid #b8546a;
+}
+
+.matched-pairs-container {
+  display: flex;
+  justify-content: right;
+  width: 1250px;
+  font-size: 26px;
+  position: relative;
+  display: none;
+}
+
+.active-matched-pairs-container {
+  display: block;
+}
+
+.matched-pairs-container > h3 {
+  margin-top: 0px;
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 1000px;
+  top: 0;
+  padding: 10px;
 }
 
 /* Media Queries */
