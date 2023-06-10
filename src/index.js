@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
-  const audioSuccess = new Audio("sounds/success-1-6297.mp3");
-  const audioFailure = new Audio("sounds/failure-drum-sound-effect-2-7184.mp3");
   const fruitShuffle = document.getElementById("fruit-shuffle");
   const popUpYouWin = document.getElementById("pop-up");
+  const audioSuccess = new Audio("sounds/success.mp3");
+  const audioFailure = new Audio("sounds/failure.mp3");
+  const audioGameover = new Audio("sounds/negative_beeps-6008.mp3");
+  const audioYouWin = new Audio("sounds/youwin.mp3");
 
   const cardsClicked = [];
   const cardsClickedId = [];
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     matchedPairedTotal();
   });
 
-  let timerStart = 3;
+  let timerStart = 35 + 1;
   function displayTimer() {
     let interval = setInterval(function () {
       timerStart -= 1;
@@ -111,24 +113,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  let stopGameover = true;
+
   function youWin() {
     popUpYouWin.style.display = "block";
 
-    gameover();
+    gameboard.style.display = "none";
+    matchedPairsContainer.style.display = "none";
+    timer.style.display = "none";
+    stopGameover = true;
+    playAudio(audioYouWin);
   }
 
   function gameover() {
-    if (timerStart <= 0) {
-      console.log("gameover");
+    if (timerStart <= 0 && !stopGameover) {
       gameboard.style.display = "none";
+      matchedPairsContainer.style.display = "none";
+      playAudio(audioGameover);
+    }
+    if (stopGameover) {
+      return;
     }
   }
 
-  function playAudio(success, failure) {
+  function playAudio(success, failure, youWin, gameover) {
     if (success) {
       success.play();
     } else if (failure) {
       failure.play();
+    } else if (gameover) {
+      gameover.play();
+    } else if (youWin) {
+      youWin.play();
     }
   }
 
