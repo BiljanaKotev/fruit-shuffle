@@ -211,14 +211,31 @@ p {
   .bg-img {
     height: 100vh;
     width: auto;
+    min-width: 100%;
   }
 
   .intro-container {
     width: 80%;
-    margin-left: 0px;
-    margin-right: 0px;
-    left: 35px;
-    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
     height: 100vh;
+  }
+
+  .gameboard {
+    width: 60%;
+    margin: 50px auto;
+    height: 100vh;
+  }
+
+  .intro {
+    font-size: 16px;
+    margin-top: 0px;
+    padding: 0;
+    text-align: center;
+  }
+
+  .instructions {
+    font-size: 16px;
   }
 }
