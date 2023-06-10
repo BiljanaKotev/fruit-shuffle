@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fruitShuffle = document.getElementById("fruit-shuffle");
   const popUpYouWin = document.getElementById("pop-up");
   const gameoverImg = document.getElementById("gameover-img");
+  const startOverBtn = document.getElementById("start-over-btn");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       backgroundImgContainer.style.display = "none";
       body.classList.toggle("active");
       gameoverImg.classList.toggle("active");
+      startOverBtn.classList.toggle("active");
       playAudio(audioGameover);
     }
   }
