@@ -33,34 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
       timerStart -= 1;
       timerSpan.textContent = timerStart;
       if (timerStart <= 0) {
-        console.log("stop");
         clearInterval(interval);
         timer.style.display = "none";
         matchedPairsContainer.style.top = "100px";
+        gameover();
       }
     }, 1000);
   }
-
-  // setInterval(displayTimer, 1000);
-
-  // let downloadTimer = setInterval(function () {
-  //   timerStart--;
-  // });
-
-  // function timerCountdown() {
-  //   if (timerStart < 0) {
-  //     console.log("stop");
-  //     clearInterval(timerStart);
-  //   }
-  // }
-
-  //  if (timerStart <= 0) {
-  //     clearInterval(downloadTimer);
-  //   }
-  // }, 1000);
-
-  //  timer.style.display = "none";
-  //  matchedPairsContainer.style.top = "100px";
 
   // Cards are created and rendered
 
@@ -139,8 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function gameover() {
-    if (displayTimer()) {
+    if (timerStart <= 0) {
       console.log("gameover");
+      gameboard.style.display = "none";
     }
   }
 
