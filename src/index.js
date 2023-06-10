@@ -1,17 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.getElementById("body");
   const startBtn = document.getElementById("start");
   const introContainer = document.getElementById("intro-container");
   const timer = document.getElementById("timer");
   const timerSpan = document.querySelector(".timer span");
+  const backgroundImgContainer = document.querySelector(".bg-img-container");
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
   const fruitShuffle = document.getElementById("fruit-shuffle");
   const popUpYouWin = document.getElementById("pop-up");
+  const gameoverImg = document.getElementById("gameover-img");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
-  const audioGameover = new Audio("sounds/negative_beeps-6008.mp3");
-  const audioYouWin = new Audio("sounds/youwin.mp3");
+  const audioGameover = new Audio("sounds/gameover.mp3");
+  const audioYouWin = new Audio("sounds/win.mp3");
 
   const cardsClicked = [];
   const cardsClickedId = [];
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  let stopGameover = true;
+  let gameWon = false;
 
   function youWin() {
     popUpYouWin.style.display = "block";
@@ -121,18 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     gameboard.style.display = "none";
     matchedPairsContainer.style.display = "none";
     timer.style.display = "none";
-    stopGameover = true;
+    gameWon = true;
     playAudio(audioYouWin);
   }
 
   function gameover() {
-    if (timerStart <= 0 && !stopGameover) {
+    if (timerStart <= 0 && !gameWon) {
       gameboard.style.display = "none";
       matchedPairsContainer.style.display = "none";
+      backgroundImgContainer.style.display = "none";
+      body.classList.toggle("active");
+      gameoverImg.classList.toggle("active");
       playAudio(audioGameover);
-    }
-    if (stopGameover) {
-      return;
     }
   }
 
