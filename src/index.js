@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
   const audioSuccess = new Audio("sounds/success-1-6297.mp3");
   const audioFailure = new Audio("sounds/failure-drum-sound-effect-2-7184.mp3");
+  const fruitShuffle = document.getElementById("fruit-shuffle");
+  const popUpYouWin = document.getElementById("pop-up");
 
   const cardsClicked = [];
   const cardsClickedId = [];
@@ -18,20 +20,47 @@ document.addEventListener("DOMContentLoaded", () => {
     introContainer.style.display = "none";
     timer.style.display = "block";
     matchedPairsContainer.style.display = "block";
-    let timerStart = 21;
-    let downloadTimer = setInterval(function () {
-      timerStart--;
-      timerSpan.textContent = timerStart;
-      if (timerStart <= 0) {
-        clearInterval(downloadTimer);
-        timer.style.display = "none";
-        matchedPairsContainer.style.top = "100px";
-      }
-    }, 1000);
+    fruitShuffle.style.display = "block";
+    displayTimer();
     createBoard();
     shuffleCards();
     matchedPairedTotal();
   });
+
+  let timerStart = 3;
+  function displayTimer() {
+    let interval = setInterval(function () {
+      timerStart -= 1;
+      timerSpan.textContent = timerStart;
+      if (timerStart <= 0) {
+        console.log("stop");
+        clearInterval(interval);
+        timer.style.display = "none";
+        matchedPairsContainer.style.top = "100px";
+      }
+    }, 1000);
+  }
+
+  // setInterval(displayTimer, 1000);
+
+  // let downloadTimer = setInterval(function () {
+  //   timerStart--;
+  // });
+
+  // function timerCountdown() {
+  //   if (timerStart < 0) {
+  //     console.log("stop");
+  //     clearInterval(timerStart);
+  //   }
+  // }
+
+  //  if (timerStart <= 0) {
+  //     clearInterval(downloadTimer);
+  //   }
+  // }, 1000);
+
+  //  timer.style.display = "none";
+  //  matchedPairsContainer.style.top = "100px";
 
   // Cards are created and rendered
 
@@ -104,8 +133,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function youWin() {
-    alert("you win");
-    console.log("you win");
+    popUpYouWin.style.display = "block";
+
+    gameover();
+  }
+
+  function gameover() {
+    if (displayTimer()) {
+      console.log("gameover");
+    }
   }
 
   function playAudio(success, failure) {
@@ -116,6 +152,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function gameover() {}
   function restartGame() {}
 });
