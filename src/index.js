@@ -129,17 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
     playAudio(audioYouWin);
   }
 
-  // function gameover() {
-  //   if (timerStart <= 0 && !gameWon) {
-  //     gameboard.style.display = "none";
-  //     matchedPairsContainer.style.display = "none";
-  //     backgroundImgContainer.style.display = "none";
-  //     body.classList.toggle("active");
-  //     gameoverImg.classList.toggle("active");
-  //     startOverBtn.classList.toggle("active");
-  //     playAudio(audioGameover);
-  //   }
-  // }
+  function gameover() {
+    if (timerStart <= 0 && !gameWon) {
+      gameboard.style.display = "none";
+      matchedPairsContainer.style.display = "none";
+      backgroundImgContainer.style.display = "none";
+      body.classList.toggle("active");
+      gameoverImg.classList.toggle("active");
+      startOverBtn.classList.toggle("active");
+      playAudio(audioGameover);
+    }
+  }
 
   function playAudio(success, failure, youWin, gameover) {
     if (success) {
