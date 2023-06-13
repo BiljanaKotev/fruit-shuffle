@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function gameover() {
     if (timerStart <= 0 && !gameWon) {
-      // gameboard.style.display = "none";
+      gameboard.style.display = "none";
       matchedPairsContainer.style.display = "none";
       backgroundImgContainer.style.display = "none";
       body.classList.toggle("active");
