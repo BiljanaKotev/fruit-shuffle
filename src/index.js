@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popUpYouWin = document.getElementById("pop-up");
   const gameoverImg = document.getElementById("gameover-img");
   const startOverBtn = document.getElementById("start-over-btn");
+  const gifContainer = document.getElementById("gif-container");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -23,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Game starts upon pressing the start button
 
   startBtn.addEventListener("click", () => {
+    startGame();
+  });
+
+  function startGame() {
     introContainer.style.display = "none";
     timer.style.display = "block";
     matchedPairsContainer.style.display = "block";
@@ -31,11 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
     createBoard();
     shuffleCards();
     matchedPairedTotal();
-  });
+  }
 
-  let timerStart = 35 + 1;
+  // let timerStart = 3 + 1;
+  // let timerStart = 0;
+  let interval;
   function displayTimer() {
-    let interval = setInterval(function () {
+    timerStart = 3;
+    timerSpan.textContent = timerStart;
+    interval = setInterval(function () {
       timerStart -= 1;
       timerSpan.textContent = timerStart;
       if (timerStart <= 0) {
@@ -131,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function gameover() {
     if (timerStart <= 0 && !gameWon) {
-      gameboard.style.display = "none";
+      // gameboard.style.display = "none";
       matchedPairsContainer.style.display = "none";
       backgroundImgContainer.style.display = "none";
       body.classList.toggle("active");
@@ -153,5 +162,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function restartGame() {}
+  startOverBtn.addEventListener("click", () => {
+    location.reload();
+  });
+
+  // function restartGame() {
+  //   // display the gameboard
+  //   if (gifContainer) {
+  //     backgroundImgContainer.style.display = "block";
+  //     gameboard.classList.add("active");
+  //     matchedPairsContainer.style.display = "block";
+  //     matchedPairsContainer.style.top = "0";
+  //     fruitShuffle.style.display = "block";
+  //     timerSpan.textContent = timerStart;
+  //     timer.style.display = "block";
+  //   }
+
+  //   // clear out and display the timer again
+  //   clearInterval(interval);
+  //   displayTimer();
+  //   console.log(timerStart);
+
+  //   shuffleCards();
+  //   matchedPairedTotal();
+
+  //   // not being triggered
+  // if (timerStart <= 0) {
+  //   location.reload();
+  // }
+  // }
 });
