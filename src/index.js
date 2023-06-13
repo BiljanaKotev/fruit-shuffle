@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // let timerStart = 0;
   let interval;
   function displayTimer() {
-    timerStart = 3;
+    timerStart = 35;
     timerSpan.textContent = timerStart;
     interval = setInterval(function () {
       timerStart -= 1;
