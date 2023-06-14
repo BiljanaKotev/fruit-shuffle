@@ -203,6 +203,10 @@ p {
 /* Media Queries */
 
 @media screen and (min-width: 389px) and (max-width: 768px) {
+  body {
+    position: relative;
+  }
+
   .bg-img-container {
     min-width: 100%;
     height: auto;
@@ -265,12 +269,14 @@ p {
     margin-top: 0px;
     font-size: 22px;
     margin-left: 10px;
+    position: absolute;
+    z-index: 1;
   }
 
   .matched-pairs-container > h3 {
     left: 80px;
     font-size: 12px;
-    top: 50px;
+    top: 80px;
     right: 0px;
   }
 

@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const popUpYouWin = document.getElementById("pop-up");
   const gameoverImg = document.getElementById("gameover-img");
   const startOverBtn = document.getElementById("start-over-btn");
-  const gifContainer = document.getElementById("gif-container");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -38,11 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
     matchedPairedTotal();
   }
 
-  // let timerStart = 3 + 1;
   // let timerStart = 0;
   let interval;
   function displayTimer() {
-    timerStart = 35;
+    timerStart = 5;
     timerSpan.textContent = timerStart;
     interval = setInterval(function () {
       timerStart -= 1;
@@ -50,7 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (timerStart <= 0) {
         clearInterval(interval);
         timer.style.display = "none";
-        matchedPairsContainer.style.top = "100px";
+        // matchedPairsContainer.style.top = "100px";
+
         gameover();
       }
     }, 1000);
@@ -165,30 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
   startOverBtn.addEventListener("click", () => {
     location.reload();
   });
-
-  // function restartGame() {
-  //   // display the gameboard
-  //   if (gifContainer) {
-  //     backgroundImgContainer.style.display = "block";
-  //     gameboard.classList.add("active");
-  //     matchedPairsContainer.style.display = "block";
-  //     matchedPairsContainer.style.top = "0";
-  //     fruitShuffle.style.display = "block";
-  //     timerSpan.textContent = timerStart;
-  //     timer.style.display = "block";
-  //   }
-
-  //   // clear out and display the timer again
-  //   clearInterval(interval);
-  //   displayTimer();
-  //   console.log(timerStart);
-
-  //   shuffleCards();
-  //   matchedPairedTotal();
-
-  //   // not being triggered
-  // if (timerStart <= 0) {
-  //   location.reload();
-  // }
-  // }
 });
