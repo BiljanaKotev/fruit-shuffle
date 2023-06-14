@@ -202,7 +202,7 @@ p {
 
 /* Media Queries */
 
-@media screen and (min-width: 459px) and (max-width: 768px) {
+@media screen and (min-width: 389px) and (max-width: 768px) {
   .bg-img-container {
     min-width: 100%;
     height: auto;
@@ -268,10 +268,10 @@ p {
   }
 
   .matched-pairs-container > h3 {
-    left: 220px;
-    font-size: 16px;
+    left: 80px;
+    font-size: 12px;
+    top: 0px;
     right: 0px;
-    top: 20px;
   }
 
   .active.start-over-btn {
