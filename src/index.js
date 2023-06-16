@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     matchedPairedTotal();
   }
 
-  // let timerStart = 0;
   let interval;
   function displayTimer() {
     timerStart = 40;
@@ -49,21 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (timerStart <= 0) {
         clearInterval(interval);
         timer.style.display = "none";
-        // matchedPairsContainer.style.top = "100px";
 
         gameover();
       }
     }, 1000);
   }
 
-  // Cards are created and rendered
+  // Cards are created dynamically and rendered
 
   function createBoard() {
     for (let i = 0; i < cardsArray.length; i++) {
       const card = document.createElement("img");
       card.setAttribute("data-id", i);
       card.setAttribute("src", "images/fuschia-bg.jpg");
-      card.setAttribute("alt", "images of different fruits");
+      card.setAttribute("alt", "back of card color fuschia");
       card.addEventListener("click", flipCard);
       gameboard.appendChild(card);
       card.className = "back-of-card";
@@ -72,6 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     gameboard.classList.toggle("active");
   }
 
+  // Cards are shuffled randomly with the Fisher Yates algorithm
+
   function shuffleCards() {
     for (let i = cardsArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -79,9 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //
+
   function flipCard() {
     const cardId = this.getAttribute("data-id");
-
     cardsClicked.push(cardsArray[cardId].name);
     cardsClickedId.push(cardId);
     this.className = "fruit-card";
