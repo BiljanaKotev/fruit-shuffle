@@ -142,7 +142,7 @@ p {
 
 .pop-up {
   position: absolute;
-  top: 200px;
+  top: 100px;
   right: 0px;
   left: 0px;
   bottom: 0px;
@@ -157,6 +157,35 @@ p {
 .pop-up > h2 {
   margin-top: 100px;
   font-size: 48px;
+}
+
+.pop-up > img {
+  width: 500px;
+}
+
+.pop-up-btn {
+  display: none;
+}
+
+.active.pop-up-btn {
+  left: 125px;
+  top: -75px;
+  background: #ff11c2;
+  padding: 15px 25px;
+  border: none;
+  font-size: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  position: absolute;
+  text-transform: uppercase;
+  color: #232b2b;
+}
+
+.active.pop-up-btn:hover {
+  background-color: #ffd202;
+  color: #ffffff;
 }
 
 .gif-container {
@@ -176,7 +205,6 @@ p {
   font-size: 22px;
   border-radius: 5px;
   cursor: pointer;
-
   display: block;
   height: 50px;
   position: absolute;

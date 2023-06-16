@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popUpYouWin = document.getElementById("pop-up");
   const gameoverImg = document.getElementById("gameover-img");
   const startOverBtn = document.getElementById("start-over-btn");
+  const popUpBtn = document.getElementById("pop-up-btn");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // let timerStart = 0;
   let interval;
   function displayTimer() {
-    timerStart = 5;
+    timerStart = 40;
     timerSpan.textContent = timerStart;
     interval = setInterval(function () {
       timerStart -= 1;
@@ -82,16 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardId = this.getAttribute("data-id");
 
     cardsClicked.push(cardsArray[cardId].name);
-    console.log(`${cardsClicked} card clicked`);
     cardsClickedId.push(cardId);
-    console.log(`${cardsClickedId} card ID`);
     this.className = "fruit-card";
     this.setAttribute("src", cardsArray[cardId].img);
     if (cardsClicked.length === 2) {
       setTimeout(() => {
         isMatch();
         cardsClicked.length = 0;
-      }, 1000);
+      }, 500);
     }
   }
 
@@ -129,25 +128,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function youWin() {
     popUpYouWin.style.display = "block";
-
+    body.style.backgroundColor = "black";
+    backgroundImgContainer.style.display = "none";
     gameboard.style.display = "none";
     matchedPairsContainer.style.display = "none";
     timer.style.display = "none";
     gameWon = true;
+    popUpBtn.classList.toggle("active");
     playAudio(audioYouWin);
   }
 
-  // function gameover() {
-  //   if (timerStart <= 0 && !gameWon) {
-  //     gameboard.style.display = "none";
-  //     matchedPairsContainer.style.display = "none";
-  //     backgroundImgContainer.style.display = "none";
-  //     body.classList.toggle("active");
-  //     gameoverImg.classList.toggle("active");
-  //     startOverBtn.classList.toggle("active");
-  //     playAudio(audioGameover);
-  //   }
-  // }
+  function gameover() {
+    if (timerStart <= 0 && !gameWon) {
+      gameboard.style.display = "none";
+      matchedPairsContainer.style.display = "none";
+      backgroundImgContainer.style.display = "none";
+      body.classList.toggle("active");
+      gameoverImg.classList.toggle("active");
+      startOverBtn.classList.toggle("active");
+      playAudio(audioGameover);
+    }
+  }
 
   function playAudio(success, failure, youWin, gameover) {
     if (success) {
@@ -162,6 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   startOverBtn.addEventListener("click", () => {
+    location.reload();
+  });
+
+  popUpBtn.addEventListener("click", () => {
     location.reload();
   });
 });
