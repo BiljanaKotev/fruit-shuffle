@@ -100,9 +100,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [How to randomize shuffle with the Fisher-Yates algorithm](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) - I had never heard about this algorithim before so 
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
+- [How to randomize shuffle with the Fisher-Yates algorithm](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) - I had never heard about this algorithim before so it was very interesting further learning about it and how it ensures the best probability that every card will have equal amount of chances to be chosen at random.
 
 ## Author
 
