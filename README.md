@@ -3,7 +3,7 @@
 https://biljanakotev.github.io/fruit-shuffle/
 
 
-This is a solution to the Ironhack Module 1 Project to build a game from scratch using HTML, CSS, Vanilla Javascript 
+This is a solution to the Ironhack Module 1 Project to build a game from scratch using HTML, CSS, Vanilla Javascript and the DOM.
 
 ## Table of contents
 
@@ -44,13 +44,14 @@ Your app must:
 ### Screenshot
 
 ![Screenshot of start page for Fruit Shuffle Memory Game](https://github.com/BiljanaKotev/fruit-shuffle/blob/main/images/screenshot.png?raw=true "Desktop Screenshot")
+![Screenshot of start page for Fruit Shuffle Memory Game](https://github.com/BiljanaKotev/fruit-shuffle/blob/main/images/fruit-shuffle-screen.png?raw=true "Desktop Screenshot")
 
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [code](https://github.com/BiljanaKotev/fruit-shuffle/tree/main)
+- Live Site URL: [github pages live site](https://biljanakotev.github.io/fruit-shuffle/)
 
 ## My process
 
@@ -60,25 +61,37 @@ Your app must:
 - Flexbox
 - CSS Grid
 - Vanilla JavaScript
+- DOM
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
+I learned how to disable a function using boolean logic:
 ```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  let gameWon = false;
+
+  function youWin() {
+    popUpYouWin.style.display = "block";
+    body.style.backgroundColor = "black";
+    backgroundImgContainer.style.display = "none";
+    gameboard.style.display = "none";
+    matchedPairsContainer.style.display = "none";
+    timer.style.display = "none";
+    gameWon = true;
+    popUpBtn.classList.toggle("active");
+    playAudio(audioYouWin);
+  }
+
+  function gameover() {
+    if (timerStart <= 0 && !gameWon) {
+      gameboard.style.display = "none";
+      matchedPairsContainer.style.display = "none";
+      backgroundImgContainer.style.display = "none";
+      body.classList.toggle("active");
+      gameoverImg.classList.toggle("active");
+      startOverBtn.classList.toggle("active");
+      playAudio(audioGameover);
+    }
+  }
 ```
 
 ### Continued development
@@ -87,16 +100,15 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [How to randomize shuffle with the Fisher-Yates shuffle](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) - I had never heard about this algorithim before so 
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Linkedin - [Biljana Kotevska](https://www.linkedin.com/in/biljana-kotevska/)
+
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I am grateful for the whole Ironhack team for supporting me throughout the whole process!
