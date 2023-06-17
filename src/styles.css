@@ -285,6 +285,7 @@ p {
   .active.gameboard {
     padding-top: 30px;
     grid-template-columns: repeat(3, 1fr);
+    height: 500px;
   }
 
   .gameboard > h1 {
