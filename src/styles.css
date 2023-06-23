@@ -6,7 +6,7 @@
 body {
   font-family: "Fredoka", sans-serif;
   color: #232b2b;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 .active#body {
@@ -15,7 +15,7 @@ body {
 
 .gameboard {
   width: 1000px;
-  height: 70%;
+  /* height: 70%; */
   margin: 100px auto;
   background-color: white;
   position: absolute;
@@ -34,6 +34,7 @@ body {
   align-items: center;
   gap: 10px;
   padding-top: 75px;
+  height: 70%;
 }
 
 .gameboard > h1 {
@@ -52,6 +53,10 @@ body {
 
 .bg-img-container {
   position: relative;
+}
+
+.active.bg-img-container {
+  top: -100px;
 }
 
 .timer {
@@ -84,6 +89,15 @@ p {
   font-size: 32px;
 }
 
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 50px;
+}
+
 .btn-start {
   padding: 15px 50px;
   font-size: 22px;
@@ -92,14 +106,18 @@ p {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   cursor: pointer;
   text-transform: uppercase;
-
-  margin-top: 100px;
+  margin-top: 50px;
   background-color: #be6578;
   color: white;
+  width: 20%;
 }
 
 .btn-start:hover {
   background-color: #000000;
+}
+
+.score-btn {
+  margin-top: 25px;
 }
 
 .bold {
@@ -115,6 +133,37 @@ p {
 
 .fruit-card {
   border: 3px solid #b8546a;
+}
+
+/* Scores Page */
+
+.scores-container {
+  display: none;
+}
+
+.scores-container > h2 {
+  font-size: 48px;
+  padding-top: 10px;
+}
+
+.scores-info-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 32px;
+}
+
+.scores-home-btn {
+  padding: 5px 15px;
+  font-size: 18px;
+  border: none;
+  margin: 10px 0 25px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  cursor: pointer;
+  background-color: #be6578;
+  color: white;
+  text-transform: uppercase;
 }
 
 .matched-pairs-container {
@@ -226,6 +275,15 @@ p {
 .active.gameover-img {
   width: 80%;
   display: block;
+}
+
+footer {
+  padding-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #be6578;
 }
 
 /* Media Queries */

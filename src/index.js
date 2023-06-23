@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.getElementById("body");
   const startBtn = document.getElementById("start");
+  const scoreBtn = document.getElementById("score-btn");
+  const scoresContainer = document.querySelector(".scores-container");
   const introContainer = document.getElementById("intro-container");
+  const introContainerParagraphs = document.querySelectorAll(".intro-container > p");
   const timer = document.getElementById("timer");
   const timerSpan = document.querySelector(".timer span");
   const backgroundImgContainer = document.querySelector(".bg-img-container");
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameoverImg = document.getElementById("gameover-img");
   const startOverBtn = document.getElementById("start-over-btn");
   const popUpBtn = document.getElementById("pop-up-btn");
+  const footer = document.querySelector(".footer");
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -27,11 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
     startGame();
   });
 
+  scoreBtn.addEventListener("click", () => {
+    for (let i = 0; i < introContainerParagraphs.length; i++) {
+      introContainerParagraphs[i].style.display = "none";
+    }
+    startBtn.style.display = "none";
+    scoreBtn.style.display = "none";
+    scoresContainer.style.display = "block";
+    footer.style.display = "none";
+  });
+
   function startGame() {
     introContainer.style.display = "none";
     timer.style.display = "block";
     matchedPairsContainer.style.display = "block";
     fruitShuffle.style.display = "block";
+    footer.style.display = "none";
     displayTimer();
     createBoard();
     shuffleCards();
@@ -69,8 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     gameboard.classList.toggle("active");
   }
-
-  // Cards are shuffled randomly with the Fisher Yates algorithm
 
   function shuffleCards() {
     for (let i = cardsArray.length - 1; i > 0; i--) {
@@ -136,20 +149,21 @@ document.addEventListener("DOMContentLoaded", () => {
     timer.style.display = "none";
     gameWon = true;
     popUpBtn.classList.toggle("active");
+    backgroundImgContainer.classList.toggle("active");
     playAudio(audioYouWin);
   }
 
-  function gameover() {
-    if (timerStart <= 0 && !gameWon) {
-      gameboard.style.display = "none";
-      matchedPairsContainer.style.display = "none";
-      backgroundImgContainer.style.display = "none";
-      body.classList.toggle("active");
-      gameoverImg.classList.toggle("active");
-      startOverBtn.classList.toggle("active");
-      playAudio(audioGameover);
-    }
-  }
+  // function gameover() {
+  //   if (timerStart <= 0 && !gameWon) {
+  //     gameboard.style.display = "none";
+  //     matchedPairsContainer.style.display = "none";
+  //     backgroundImgContainer.style.display = "none";
+  //     body.classList.toggle("active");
+  //     gameoverImg.classList.toggle("active");
+  //     startOverBtn.classList.toggle("active");
+  //     playAudio(audioGameover);
+  //   }
+  // }
 
   function playAudio(success, failure, youWin, gameover) {
     if (success) {

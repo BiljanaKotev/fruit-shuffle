@@ -21,13 +21,24 @@
       <div id="intro-container" class="intro-container">
         <p class="intro">Hello and welcome to the Fruit Shuffle Memory Game</p>
         <p class="instructions">
-          To initiate the game, simply press the <span class="bold">START</span> button. Once the game begins, a timer will activate, starting at 40 seconds and counting down.
-          You'll have precisely 40 seconds to uncover and match all the pairs of fruits. The player who manages to find the most matching pairs when the timer reaches zero will
-          emerge victorious.
+          To initiate the game, simply press the <span class="bold">START</span> button. Once the game https://app.quotanda.com/begins, a timer will activate, starting at 40
+          seconds and counting down. You'll have precisely 40 seconds to uncover and match all the pairs of fruits. The player who manages to find the most matching pairs when the
+          timer reaches zero will emerge victorious.
         </p>
-
-        <button class="btn-start bold" id="start">Start</button>
+        <div class="scores-container">
+          <h2>Scores</h2>
+          <button class="scores-home-btn">Home</button>
+          <div class="scores-info-container">
+            <span class="scores-name">Name</span>
+            <span class="scores-points">Points</span>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <button class="btn-start bold" id="start">Start</button>
+          <button class="btn-start bold score-btn" id="score-btn">Scores</button>
+        </div>
       </div>
+      <footer class="footer">Designed and Coded: By Biljana Kotevska and is <a href="https://github.com/BiljanaKotev/fruit-shuffle" target="_blank">open-sourced</a></footer>
     </div>
     <div class="pop-up" id="pop-up">
       <button class="bold pop-up-btn" id="pop-up-btn">Restart Game</button>
