@@ -57,6 +57,7 @@ body {
 
 .active.bg-img-container {
   top: -100px;
+  z-index: -1;
 }
 
 .timer {
@@ -110,6 +111,7 @@ p {
   background-color: #be6578;
   color: white;
   width: 20%;
+  letter-spacing: 1px;
 }
 
 .btn-start:hover {
@@ -144,6 +146,7 @@ p {
 .scores-container > h2 {
   font-size: 48px;
   padding-top: 10px;
+  letter-spacing: 0.5px;
 }
 
 .scores-info-container {
@@ -154,8 +157,8 @@ p {
 }
 
 .scores-home-btn {
-  padding: 5px 15px;
-  font-size: 18px;
+  padding: 15px 50px;
+  font-size: 22px;
   border: none;
   margin: 10px 0 25px;
   border-radius: 5px;
@@ -164,6 +167,11 @@ p {
   background-color: #be6578;
   color: white;
   text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scores-home-btn:hover {
+  background-color: #000000;
 }
 
 .matched-pairs-container {
@@ -193,11 +201,10 @@ p {
   position: absolute;
   top: 100px;
   right: 0px;
-  left: 0px;
+  left: 50px;
   bottom: 0px;
   margin: 0 auto;
-  background: purple;
-  width: 500px;
+  width: 650px;
   height: 250px;
   text-align: center;
   display: none;
@@ -209,7 +216,7 @@ p {
 }
 
 .pop-up > img {
-  width: 500px;
+  width: 300px;
 }
 
 .pop-up-btn {
@@ -217,7 +224,7 @@ p {
 }
 
 .active.pop-up-btn {
-  left: 125px;
+  left: 210px;
   top: -75px;
   background: #ff11c2;
   padding: 15px 25px;
@@ -235,6 +242,40 @@ p {
 .active.pop-up-btn:hover {
   background-color: #ffd202;
   color: #ffffff;
+}
+
+.pop-up-score-container > h2 {
+  font-size: 36px;
+  padding-top: 25px;
+}
+
+.pop-up-score-container > input {
+  height: 40px;
+  text-align: center;
+  font-size: 22px;
+  width: 20%;
+}
+
+.pop-up-return-btn {
+  padding: 15px 50px;
+  font-size: 22px;
+  border: none;
+  margin: 10px 0 25px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  cursor: pointer;
+  background-color: #be6578;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pop-up-score-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
 }
 
 .gif-container {

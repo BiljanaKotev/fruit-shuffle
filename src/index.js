@@ -1,22 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.getElementById("body");
+
+  // Buttons
   const startBtn = document.getElementById("start");
   const scoreBtn = document.getElementById("score-btn");
+  const scoresHomeBtn = document.querySelector(".scores-home-btn");
+  const startOverBtn = document.getElementById("start-over-btn");
+  const popUpBtn = document.getElementById("pop-up-btn");
+  const popUpReturnBtn = document.querySelector(".pop-up-return-btn");
+
   const scoresContainer = document.querySelector(".scores-container");
   const introContainer = document.getElementById("intro-container");
   const introContainerParagraphs = document.querySelectorAll(".intro-container > p");
+
+  // Timer
   const timer = document.getElementById("timer");
   const timerSpan = document.querySelector(".timer span");
+
   const backgroundImgContainer = document.querySelector(".bg-img-container");
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
   const fruitShuffle = document.getElementById("fruit-shuffle");
   const popUpYouWin = document.getElementById("pop-up");
+  const popUpScore = document.querySelector(".pop-up-score-container > h2");
+  const popUpInput = document.querySelector(".pop-up-score-container > input");
+  console.log(popUpInput);
   const gameoverImg = document.getElementById("gameover-img");
-  const startOverBtn = document.getElementById("start-over-btn");
-  const popUpBtn = document.getElementById("pop-up-btn");
   const footer = document.querySelector(".footer");
+
+  // Audio
   const audioSuccess = new Audio("sounds/success.mp3");
   const audioFailure = new Audio("sounds/failure.mp3");
   const audioGameover = new Audio("sounds/gameover.mp3");
@@ -41,12 +54,23 @@ document.addEventListener("DOMContentLoaded", () => {
     footer.style.display = "none";
   });
 
+  scoresHomeBtn.addEventListener("click", () => {
+    for (let i = 0; i < introContainerParagraphs.length; i++) {
+      introContainerParagraphs[i].style.display = "block";
+    }
+    scoresContainer.style.display = "none";
+    startBtn.style.display = "block";
+    scoreBtn.style.display = "block";
+    footer.style.display = "block";
+  });
+
   function startGame() {
     introContainer.style.display = "none";
     timer.style.display = "block";
     matchedPairsContainer.style.display = "block";
     fruitShuffle.style.display = "block";
     footer.style.display = "none";
+    // backgroundImgContainer.classList.toggle("active");
     displayTimer();
     createBoard();
     shuffleCards();
@@ -142,14 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function youWin() {
     popUpYouWin.style.display = "block";
-    body.style.backgroundColor = "black";
     backgroundImgContainer.style.display = "none";
     gameboard.style.display = "none";
     matchedPairsContainer.style.display = "none";
     timer.style.display = "none";
     gameWon = true;
     popUpBtn.classList.toggle("active");
-    backgroundImgContainer.classList.toggle("active");
+    popUpScore.innerText = `${matchedPair} points`;
     playAudio(audioYouWin);
   }
 
