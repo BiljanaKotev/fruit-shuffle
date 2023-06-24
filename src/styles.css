@@ -152,8 +152,13 @@ p {
 .scores-info-container {
   display: flex;
   justify-content: center;
-  gap: 25px;
   font-size: 32px;
+}
+
+.scores-info-container > ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
 }
 
 .scores-home-btn {
@@ -223,7 +228,8 @@ p {
   display: none;
 }
 
-.active.pop-up-btn {
+.active.pop-up-btn,
+.active.restart-gameover-btn {
   left: 210px;
   top: -75px;
   background: #ff11c2;
@@ -244,19 +250,31 @@ p {
   color: #ffffff;
 }
 
-.pop-up-score-container > h2 {
+.pop-up-score-container,
+.gameover-score-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pop-up-score-container > h2,
+.gameover-score-container > h2 {
   font-size: 36px;
   padding-top: 25px;
 }
 
-.pop-up-score-container > input {
+.pop-up-score-container > input,
+.gameover-score-container > input {
   height: 40px;
   text-align: center;
   font-size: 22px;
   width: 20%;
 }
 
-.pop-up-return-btn {
+.pop-up-return-btn,
+.gameover-return-btn {
   padding: 15px 50px;
   font-size: 22px;
   border: none;
@@ -270,26 +288,16 @@ p {
   letter-spacing: 1px;
 }
 
-.pop-up-score-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  align-items: center;
-  justify-content: center;
+.gameover-container {
+  margin: 0 auto;
+  width: 400px;
 }
 
-.gif-container {
-  display: flex;
-  justify-content: center;
-  background: #ff11c2;
-  position: relative;
-}
-
-.start-over-btn {
+.restart-gameover-btn {
   display: none;
 }
 
-.active.start-over-btn {
+/* .active.restart-gameover-btn {
   padding: 15px 25px;
   border: none;
   font-size: 22px;
@@ -298,13 +306,13 @@ p {
   display: block;
   height: 50px;
   position: absolute;
-  top: 50px;
+  top: 20px;
   text-transform: uppercase;
   background: #0cff00;
   color: #232b2b;
-}
+} */
 
-.active.start-over-btn:hover {
+.active.restart-gameover-btn:hover {
   background: #ff11c2;
   color: #232b2b;
 }
@@ -314,8 +322,9 @@ p {
 }
 
 .active.gameover-img {
-  width: 80%;
+  width: 400px;
   display: block;
+  margin-top: 100px;
 }
 
 footer {
@@ -408,7 +417,7 @@ footer a {
     right: 0px;
   }
 
-  .active.start-over-btn {
+  .active.restart-gameover-btn {
     padding: 5px 15px;
     width: 130px;
     font-size: 12px;

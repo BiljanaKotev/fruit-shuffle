@@ -1,32 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.getElementById("body");
 
-  // Buttons
+  const backgroundImgContainer = document.querySelector(".bg-img-container");
+  const introContainer = document.getElementById("intro-container");
+  const introContainerParagraphs = document.querySelectorAll(".intro-container > p");
   const startBtn = document.getElementById("start");
   const scoreBtn = document.getElementById("score-btn");
   const scoresHomeBtn = document.querySelector(".scores-home-btn");
-  const startOverBtn = document.getElementById("start-over-btn");
-  const popUpBtn = document.getElementById("pop-up-btn");
-  const popUpReturnBtn = document.querySelector(".pop-up-return-btn");
 
   const scoresContainer = document.querySelector(".scores-container");
-  const introContainer = document.getElementById("intro-container");
-  const introContainerParagraphs = document.querySelectorAll(".intro-container > p");
-
-  // Timer
   const timer = document.getElementById("timer");
   const timerSpan = document.querySelector(".timer span");
-
-  const backgroundImgContainer = document.querySelector(".bg-img-container");
   const gameboard = document.getElementById("gameboard");
   const matchedPairsContainer = document.getElementById("matched-pairs-container");
   const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
   const fruitShuffle = document.getElementById("fruit-shuffle");
   const popUpYouWin = document.getElementById("pop-up");
-  const popUpScore = document.querySelector(".pop-up-score-container > h2");
+  const popUpBtn = document.getElementById("pop-up-btn");
+  const popUpReturnBtn = document.querySelector(".pop-up-return-btn");
+  const popUpScoreHeading = document.querySelector(".pop-up-score-container > h2");
   const popUpInput = document.querySelector(".pop-up-score-container > input");
-  console.log(popUpInput);
+  const gameoverScoreHeading = document.querySelector(".gameover-score-container > h2");
   const gameoverImg = document.getElementById("gameover-img");
+  const restartGameoverBtn = document.getElementById("restart-gameover-btn");
   const footer = document.querySelector(".footer");
 
   // Audio
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     matchedPairsContainer.style.display = "block";
     fruitShuffle.style.display = "block";
     footer.style.display = "none";
-    // backgroundImgContainer.classList.toggle("active");
+
     displayTimer();
     createBoard();
     shuffleCards();
@@ -172,21 +168,25 @@ document.addEventListener("DOMContentLoaded", () => {
     timer.style.display = "none";
     gameWon = true;
     popUpBtn.classList.toggle("active");
-    popUpScore.innerText = `${matchedPair} points`;
+    popUpScoreHeading.innerText = `you got ${matchedPair} points!`;
+
     playAudio(audioYouWin);
   }
 
-  // function gameover() {
-  //   if (timerStart <= 0 && !gameWon) {
-  //     gameboard.style.display = "none";
-  //     matchedPairsContainer.style.display = "none";
-  //     backgroundImgContainer.style.display = "none";
-  //     body.classList.toggle("active");
-  //     gameoverImg.classList.toggle("active");
-  //     startOverBtn.classList.toggle("active");
-  //     playAudio(audioGameover);
-  //   }
-  // }
+  function gameover() {
+    if (timerStart <= 0 && !gameWon) {
+      gameboard.style.display = "none";
+      matchedPairsContainer.style.display = "none";
+      backgroundImgContainer.style.display = "none";
+      body.classList.toggle("active");
+      gameoverImg.classList.toggle("active");
+      restartGameoverBtn.classList.toggle("active");
+      restartGameoverBtn.style.top = "20px";
+      restartGameoverBtn.style.left = "650px";
+      gameoverScoreHeading.innerText = `you got ${matchedPair} points!`;
+      playAudio(audioGameover);
+    }
+  }
 
   function playAudio(success, failure, youWin, gameover) {
     if (success) {
@@ -200,9 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  startOverBtn.addEventListener("click", () => {
-    location.reload();
-  });
+  // restartGameoverBtn.addEventListener("click", () => {
+  //   location.reload();
+  // });
 
   popUpBtn.addEventListener("click", () => {
     location.reload();

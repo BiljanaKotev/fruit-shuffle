@@ -29,8 +29,10 @@
           <h2>Scores</h2>
           <button class="scores-home-btn bold">Home</button>
           <div class="scores-info-container">
-            <span class="scores-name">Name</span>
-            <span class="scores-points">Points</span>
+            <ul>
+              <li class="scores-name">Name</li>
+              <span class="scores-points">Points</span>
+            </ul>
           </div>
         </div>
         <div class="buttons-container">
@@ -45,14 +47,19 @@
       <img class="you-win-img" src="images/you-win.jpg" alt="you win image" />
       <div class="pop-up-score-container">
         <h2>Score</h2>
-        <input type="text" placeholder="Name" />
+        <input type="text" id="name" name="name" placeholder="Name" />
         <button class="pop-up-return-btn">Enter</button>
       </div>
     </div>
 
-    <div class="gif-container" id="gif-container">
-      <button class="start-over-btn bold" id="start-over-btn">Restart Game</button>
+    <div class="gameover-container" id="gameover-container">
+      <button class="restart-gameover-btn bold" id="restart-gameover-btn">Restart Game</button>
       <img class="gameover-img" id="gameover-img" src="images/gameover.gif" alt="gameover gif" />
+      <div class="gameover-score-container">
+        <h2>Score</h2>
+        <input type="text" placeholder="Name" />
+        <button class="gameover-return-btn">Enter</button>
+      </div>
     </div>
 
     <script src="src/cards.js"></script>
