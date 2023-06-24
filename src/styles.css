@@ -110,7 +110,7 @@ p {
   margin-top: 50px;
   background-color: #be6578;
   color: white;
-  width: 20%;
+  width: 200px;
   letter-spacing: 1px;
 }
 
@@ -203,10 +203,6 @@ p {
 }
 
 .pop-up {
-  position: absolute;
-  top: 100px;
-  right: 0px;
-  left: 50px;
   bottom: 0px;
   margin: 0 auto;
   width: 650px;
@@ -230,8 +226,6 @@ p {
 
 .active.pop-up-btn,
 .active.restart-gameover-btn {
-  left: 210px;
-  top: -75px;
   background: #ff11c2;
   padding: 15px 25px;
   border: none;
@@ -240,7 +234,7 @@ p {
   cursor: pointer;
   display: block;
   height: 50px;
-  position: absolute;
+  margin: 25px auto;
   text-transform: uppercase;
   color: #232b2b;
 }
@@ -274,7 +268,7 @@ p {
 }
 
 .pop-up-return-btn,
-.gameover-return-btn {
+.gameover-enter-btn {
   padding: 15px 50px;
   font-size: 22px;
   border: none;
@@ -425,8 +419,12 @@ footer a {
     top: 10px;
   }
 
-  .active.gameover-img {
-    height: 100vh;
-    width: 100%;
+  .gameover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    width: 800px;
   }
 }

@@ -1,4 +1,4 @@
-const cardsArray = [
+export const cardsArray = [
   {
     name: "banana",
     img: "images/banana.svg",

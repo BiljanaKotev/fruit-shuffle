@@ -1,3 +1,5 @@
+import { cardsArray } from "./cards.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.getElementById("body");
 
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popUpReturnBtn = document.querySelector(".pop-up-return-btn");
   const popUpScoreHeading = document.querySelector(".pop-up-score-container > h2");
   const popUpInput = document.querySelector(".pop-up-score-container > input");
+  const gameoverScoreContainer = document.querySelector(".gameover-score-container");
   const gameoverScoreHeading = document.querySelector(".gameover-score-container > h2");
   const gameoverImg = document.getElementById("gameover-img");
   const restartGameoverBtn = document.getElementById("restart-gameover-btn");
@@ -34,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardsClicked = [];
   const cardsClickedId = [];
 
+  let timerStart;
   // Game starts upon pressing the start button
 
   startBtn.addEventListener("click", () => {
@@ -168,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     timer.style.display = "none";
     gameWon = true;
     popUpBtn.classList.toggle("active");
+    gameoverScoreContainer.style.display = "none";
     popUpScoreHeading.innerText = `you got ${matchedPair} points!`;
 
     playAudio(audioYouWin);
@@ -181,8 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
       body.classList.toggle("active");
       gameoverImg.classList.toggle("active");
       restartGameoverBtn.classList.toggle("active");
-      restartGameoverBtn.style.top = "20px";
-      restartGameoverBtn.style.left = "650px";
       gameoverScoreHeading.innerText = `you got ${matchedPair} points!`;
       playAudio(audioGameover);
     }
@@ -200,9 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // restartGameoverBtn.addEventListener("click", () => {
-  //   location.reload();
-  // });
+  restartGameoverBtn.addEventListener("click", () => {
+    location.reload();
+  });
 
   popUpBtn.addEventListener("click", () => {
     location.reload();
