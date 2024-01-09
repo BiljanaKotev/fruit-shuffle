@@ -333,9 +333,9 @@ footer a {
 /* Media Queries */
 
 @media screen and (min-width: 389px) and (max-width: 768px) {
-  body {
+/*   body {
     position: relative;
-  }
+  } */
 
   .bg-img-container {
     min-width: 100%;
