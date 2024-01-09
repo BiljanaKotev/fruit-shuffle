@@ -1,38 +1,39 @@
-import { cardsArray } from "./cards.js";
+import { cardsArray } from './cards.js';
 
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.getElementById("body");
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.getElementById('body');
 
-  const backgroundImgContainer = document.querySelector(".bg-img-container");
-  const introContainer = document.getElementById("intro-container");
-  const introContainerParagraphs = document.querySelectorAll(".intro-container > p");
-  const startBtn = document.getElementById("start");
-  const scoreBtn = document.getElementById("score-btn");
-  const scoresHomeBtn = document.querySelector(".scores-home-btn");
+  const backgroundImgContainer = document.querySelector('.bg-img-container');
+  const introContainer = document.getElementById('intro-container');
+  const introContainerParagraphs = document.querySelectorAll('.intro-container > p');
+  const startBtn = document.getElementById('start');
+  const scoreBtn = document.getElementById('score-btn');
+  const scoresHomeBtn = document.querySelector('.scores-home-btn');
 
-  const scoresContainer = document.querySelector(".scores-container");
-  const timer = document.getElementById("timer");
-  const timerSpan = document.querySelector(".timer span");
-  const gameboard = document.getElementById("gameboard");
-  const matchedPairsContainer = document.getElementById("matched-pairs-container");
-  const matchedPairsContainerSpan = document.querySelector(".matched-pairs-container span");
-  const fruitShuffle = document.getElementById("fruit-shuffle");
-  const popUpYouWin = document.getElementById("pop-up");
-  const popUpBtn = document.getElementById("pop-up-btn");
-  const popUpReturnBtn = document.querySelector(".pop-up-return-btn");
-  const popUpScoreHeading = document.querySelector(".pop-up-score-container > h2");
-  const popUpInput = document.querySelector(".pop-up-score-container > input");
-  const gameoverScoreContainer = document.querySelector(".gameover-score-container");
-  const gameoverScoreHeading = document.querySelector(".gameover-score-container > h2");
-  const gameoverImg = document.getElementById("gameover-img");
-  const restartGameoverBtn = document.getElementById("restart-gameover-btn");
-  const footer = document.querySelector(".footer");
+  const scoresContainer = document.querySelector('.scores-container');
+  const timer = document.getElementById('timer');
+  const timerSpan = document.querySelector('.timer span');
+  const gameboard = document.getElementById('gameboard');
+  const matchedPairsContainer = document.getElementById('matched-pairs-container');
+  const matchedPairsContainerSpan = document.querySelector('.matched-pairs-container span');
+  const fruitShuffle = document.getElementById('fruit-shuffle');
+  const popUpYouWin = document.getElementById('pop-up');
+  const popUpBtn = document.getElementById('pop-up-btn');
+  const popUpReturnBtn = document.querySelector('.pop-up-return-btn');
+  const popUpScoreHeading = document.querySelector('.pop-up-score-container > h2');
+  const popUpInput = document.querySelector('.pop-up-score-container > input');
+  const gameoverScoreContainer = document.querySelector('.gameover-score-container');
+  const gameoverScoreHeading = document.querySelector('.gameover-score-container > h2');
+  const gameoverImg = document.getElementById('gameover-img');
+  const restartGameoverBtn = document.getElementById('restart-gameover-btn');
+  const footer = document.querySelector('.footer');
+  const winScreenScore = document.getElementById('win-screen-score');
 
   // Audio
-  const audioSuccess = new Audio("sounds/success.mp3");
-  const audioFailure = new Audio("sounds/failure.mp3");
-  const audioGameover = new Audio("sounds/gameover.mp3");
-  const audioYouWin = new Audio("sounds/win.mp3");
+  const audioSuccess = new Audio('sounds/success.mp3');
+  const audioFailure = new Audio('sounds/failure.mp3');
+  const audioGameover = new Audio('sounds/gameover.mp3');
+  const audioYouWin = new Audio('sounds/win.mp3');
 
   const cardsClicked = [];
   const cardsClickedId = [];
@@ -40,36 +41,36 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerStart;
   // Game starts upon pressing the start button
 
-  startBtn.addEventListener("click", () => {
+  startBtn.addEventListener('click', () => {
     startGame();
   });
 
-  scoreBtn.addEventListener("click", () => {
+  scoreBtn.addEventListener('click', () => {
     for (let i = 0; i < introContainerParagraphs.length; i++) {
-      introContainerParagraphs[i].style.display = "none";
+      introContainerParagraphs[i].style.display = 'none';
     }
-    startBtn.style.display = "none";
-    scoreBtn.style.display = "none";
-    scoresContainer.style.display = "block";
-    footer.style.display = "none";
+    startBtn.style.display = 'none';
+    scoreBtn.style.display = 'none';
+    scoresContainer.style.display = 'block';
+    footer.style.display = 'none';
   });
 
-  scoresHomeBtn.addEventListener("click", () => {
+  scoresHomeBtn.addEventListener('click', () => {
     for (let i = 0; i < introContainerParagraphs.length; i++) {
-      introContainerParagraphs[i].style.display = "block";
+      introContainerParagraphs[i].style.display = 'block';
     }
-    scoresContainer.style.display = "none";
-    startBtn.style.display = "block";
-    scoreBtn.style.display = "block";
-    footer.style.display = "block";
+    scoresContainer.style.display = 'none';
+    startBtn.style.display = 'block';
+    scoreBtn.style.display = 'block';
+    footer.style.display = 'block';
   });
 
   function startGame() {
-    introContainer.style.display = "none";
-    timer.style.display = "block";
-    matchedPairsContainer.style.display = "block";
-    fruitShuffle.style.display = "block";
-    footer.style.display = "none";
+    introContainer.style.display = 'none';
+    timer.style.display = 'block';
+    matchedPairsContainer.style.display = 'block';
+    fruitShuffle.style.display = 'block';
+    footer.style.display = 'none';
 
     displayTimer();
     createBoard();
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timerSpan.textContent = timerStart;
       if (timerStart <= 0) {
         clearInterval(interval);
-        timer.style.display = "none";
+        timer.style.display = 'none';
 
         gameover();
       }
@@ -97,16 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createBoard() {
     for (let i = 0; i < cardsArray.length; i++) {
-      const card = document.createElement("img");
-      card.setAttribute("data-id", i);
-      card.setAttribute("src", "images/fuschia-bg.jpg");
-      card.setAttribute("alt", "back of card color fuschia");
-      card.addEventListener("click", flipCard);
+      const card = document.createElement('img');
+      card.setAttribute('data-id', i);
+      card.setAttribute('src', 'images/fuschia-bg.jpg');
+      card.setAttribute('alt', 'back of card color fuschia');
+      card.addEventListener('click', flipCard);
       gameboard.appendChild(card);
-      card.className = "back-of-card";
-      card.style.borderRadius = "5px";
+      card.className = 'back-of-card';
+      card.style.borderRadius = '5px';
     }
-    gameboard.classList.toggle("active");
+    gameboard.classList.toggle('active');
   }
 
   function shuffleCards() {
@@ -119,11 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //
 
   function flipCard() {
-    const cardId = this.getAttribute("data-id");
+    const cardId = this.getAttribute('data-id');
     cardsClicked.push(cardsArray[cardId].name);
     cardsClickedId.push(cardId);
-    this.className = "fruit-card";
-    this.setAttribute("src", cardsArray[cardId].img);
+    this.className = 'fruit-card';
+    this.setAttribute('src', cardsArray[cardId].img);
     if (cardsClicked.length === 2) {
       setTimeout(() => {
         isMatch();
@@ -144,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsClickedId.length = 0;
     } else {
       playAudio(audioFailure);
-      firstCardElement.src = "images/fuschia-bg.jpg";
-      secondCardElement.src = "images/fuschia-bg.jpg";
+      firstCardElement.src = 'images/fuschia-bg.jpg';
+      secondCardElement.src = 'images/fuschia-bg.jpg';
       cardsClickedId.length = 0;
     }
   }
@@ -165,27 +166,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let gameWon = false;
 
   function youWin() {
-    popUpYouWin.style.display = "block";
-    backgroundImgContainer.style.display = "none";
-    gameboard.style.display = "none";
-    matchedPairsContainer.style.display = "none";
-    timer.style.display = "none";
+    popUpYouWin.style.display = 'block';
+    backgroundImgContainer.style.display = 'none';
+    gameboard.style.display = 'none';
+    matchedPairsContainer.style.display = 'none';
+    timer.style.display = 'none';
     gameWon = true;
-    popUpBtn.classList.toggle("active");
-    gameoverScoreContainer.style.display = "none";
+    popUpBtn.classList.toggle('active');
+    gameoverScoreContainer.style.display = 'none';
     popUpScoreHeading.innerText = `you got ${matchedPair} points!`;
-
+    winScreenScore.innerHTML = 'test';
     playAudio(audioYouWin);
   }
 
   function gameover() {
     if (timerStart <= 0 && !gameWon) {
-      gameboard.style.display = "none";
-      matchedPairsContainer.style.display = "none";
-      backgroundImgContainer.style.display = "none";
-      body.classList.toggle("active");
-      gameoverImg.classList.toggle("active");
-      restartGameoverBtn.classList.toggle("active");
+      gameboard.style.display = 'none';
+      matchedPairsContainer.style.display = 'none';
+      backgroundImgContainer.style.display = 'none';
+      body.classList.toggle('active');
+      gameoverImg.classList.toggle('active');
+      restartGameoverBtn.classList.toggle('active');
       gameoverScoreHeading.innerText = `you got ${matchedPair} points!`;
       playAudio(audioGameover);
     }
@@ -203,11 +204,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  restartGameoverBtn.addEventListener("click", () => {
+  restartGameoverBtn.addEventListener('click', () => {
     location.reload();
   });
 
-  popUpBtn.addEventListener("click", () => {
+  popUpBtn.addEventListener('click', () => {
     location.reload();
   });
 });
