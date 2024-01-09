@@ -344,8 +344,7 @@ footer a {
 
   .bg-img {
     height: 100vh;
-    width: auto;
-    min-width: 100%;
+    object-fit: cover;
   }
 
   .intro-container {
